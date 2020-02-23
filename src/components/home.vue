@@ -79,7 +79,6 @@ export default {
         return this.$message.error(res.meta.msg)
       }
       this.menulist = res.data
-      console.log(res)
     },
     toggleCollapse() {
       this.isCollapse = !this.isCollapse
