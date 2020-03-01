@@ -36,7 +36,9 @@ import {
   Step,
   CheckboxGroup,
   Checkbox,
-  Upload
+  Upload,
+  Timeline,
+  TimelineItem
 
 } from 'element-ui'
 
@@ -85,6 +87,8 @@ Vue.use(CheckboxGroup)
 Vue.use(Checkbox)
 Vue.use(Upload)
 Vue.use(VueQuillEditor)
+Vue.use(Timeline)
+Vue.use(TimelineItem)
 
 Vue.component('tree-table', TreeTable)
 Vue.prototype.$message = Message
