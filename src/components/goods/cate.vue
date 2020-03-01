@@ -27,13 +27,13 @@
         class="treeTable"
       >
         <!-- 是否有效 -->
-        <template slot="isok" scope="scope">
+        <template slot="isok" slot-scope="scope">
           <i class="el-icon-success" v-if="scope.row.cat_deleted===false" style="color:lightgreen;"></i>
           <i class="el-icon-error" v-else style="color:red;"></i>
         </template>
 
         <!-- 排序 -->
-        <template slot="order" scope="scope">
+        <template slot="order" slot-scope="scope">
           <el-tag v-if="scope.row.cat_level===0" size="mini">一级</el-tag>
           <el-tag v-else-if="scope.row.cat_level===1" size="mini" type="success">二级</el-tag>
           <el-tag v-else size="mini" type="warning">三级</el-tag>

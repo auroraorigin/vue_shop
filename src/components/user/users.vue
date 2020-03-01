@@ -260,9 +260,7 @@ export default {
       this.getUserList()
     },
     async userStateChanged(userinfo) {
-      const { data: res } = await this.$http.put(
-        `users/${userinfo.id}/state/${userinfo.mg_state}`
-      )
+      const { data: res } = await this.$http.put(`users/${userinfo.id}/state/${userinfo.mg_state}`)
       if (res.meta.status !== 200) {
         userinfo.mg_state = !userinfo.mg_state
         return this.$message.error('更新用户状态失败')
@@ -302,13 +300,10 @@ export default {
     editUserInfo() {
       this.$refs.editFormRef.validate(async valid => {
         if (!valid) return
-        const { data: res } = await this.$http.put(
-          'users/' + this.editForm.id,
-          {
-            email: this.editForm.email,
-            mobile: this.editForm.mobile
-          }
-        )
+        const { data: res } = await this.$http.put('users/' + this.editForm.id, {
+          email: this.editForm.email,
+          mobile: this.editForm.mobile
+        })
         if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
         this.editDialogVisible = false
         this.getUserList()
@@ -317,15 +312,11 @@ export default {
     },
     // 根据ID删除用户信息
     async removeUserById(id) {
-      const confirmResult = await this.$confirm(
-        '此操作将永久删除该用户, 是否继续?',
-        '提示',
-        {
-          confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
-        }
-      ).catch(err => err)
+      const confirmResult = await this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).catch(err => err)
 
       if (confirmResult !== 'confirm') return this.$message.info('已取消删除')
 
@@ -348,12 +339,9 @@ export default {
     // 更新用户新角色
     async saveRoleInfo() {
       if (!this.selectedRoleId) return this.$message.error('请选择要分配的角色')
-      const { data: res } = await this.$http.put(
-        `users/${this.userInfo.id}/role`,
-        {
-          rid: this.selectedRoleId
-        }
-      )
+      const { data: res } = await this.$http.put(`users/${this.userInfo.id}/role`, {
+        rid: this.selectedRoleId
+      })
 
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
 
